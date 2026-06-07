@@ -1,0 +1,287 @@
+:root {
+    --bg-color: #0d0e15;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --accent-color: #00ffcc;
+    --text-main: #ffffff;
+    --text-muted: #8a8f98;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+/* Modern Input Styling with Floating Labels */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+}
+
+.input-group label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 8px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    background: var(--bg-color);
+    padding: 0 4px;
+}
+
+/* Glowing Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.switch-page {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.switch-page a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Dashboard & Manager UI */
+.dashboard-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.glow-text {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #fff, var(--accent-color));
+    -webkit-text-fill-color: transparent;
+}
+
+.accounts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.account-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.account-card:hover {
+    border-color: var(--accent-color);
+    background: rgba(0, 255, 204, 0.03);
+    transform: translateX(5px);
+}
+
+.arrow {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* Info Page Layout */
+.details-card {
+    max-width: 500px;
+}
+
+.back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    color: var(--accent-color);
+}
+
+.info-box {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-field {
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.8rem;
+}
+
+.info-field h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 0.3rem;
+}
+
+.label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+}
+ /* تحسينات إضافية للتصميم */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.add-btn {
+    text-decoration: none;
+    background: var(--accent-color);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    box-shadow: 0 0 15px var(--accent-color);
+}
+/* تنسيق الجزء العلوي في manager.html */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.user-info h3 {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+}
+
+.user-info p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.add-btn {
+    background: var(--accent-color);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: translateY(-2px);
+}
+.delete_btn {
+    background: rgba(255, 76, 76, 0.1);
+    color: #ff4c4c;
+    border: 1px solid rgba(255, 76, 76, 0.3);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.delete_btn:hover {
+    background: #ff4c4c;
+    color: #fff;
+}

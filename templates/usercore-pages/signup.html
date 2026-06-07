@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    <title>Vault - signup</title>
+{% block content %}
+    <div class="glass-card" >
+        <h2>Get Started</h2>
+        <p class="subtitle">Create your master vault account</p>
+        <form id="signupForm" method="post">
+                {% csrf_token %}
+            <div class="input-group">
+                <input type="text" id="newUsername" required placeholder=" " name ='username'>
+                <label for="newUsername">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="newPassword" required placeholder=" " name ='password'>
+                <label for="newPassword">Password</label>
+            </div>
+            <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+        <p class="switch-page">Already have one? <a href="/">Login</a></p>
+    </div>
+
+{% endblock content %}
+
+
+</html>

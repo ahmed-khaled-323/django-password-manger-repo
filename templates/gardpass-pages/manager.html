@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Vault - Dashboard</title>
+
+</head>
+
+{% block content %}
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- الهيدر المحدث -->
+
+        <header class="top-nav">
+
+            <div class="user-info">
+
+                <p>Welcome back,</p>
+
+                <h3>{{ user.username }}</h3> <!-- عرض اسم المستخدم -->
+
+            </div>
+
+            <a href="add/" class="add-btn">+ Add Account</a>
+
+        </header>
+
+
+        <!-- قائمة الحسابات -->
+
+    <div class="accounts-grid" id="accountsList">
+        {% for account in accounts %}
+            <div class="account-card">
+                <a href="{% url 'account' account.id %}" style="text-decoration: none; color: inherit; flex-grow: 1;">
+                <h3 style="margin-bottom: 5px;">{{ account.bio }}</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">{{ account.UserName}}</p>
+            </a>
+            
+            <form action="{% url 'delete_account' account.id %}" method="POST" style="margin-left: 15px;">
+                {% csrf_token %}
+                    <button type="submit" class="delete_btn" onclick="return confirm('هل أنت متأكد من حذف هذا الحساب؟')">
+                    Delete
+                    </button>
+                </form>
+            </div>
+         {% endfor %}
+    </div>
+
+    </div>
+
+</body>
+
+{% endblock content %}
+
+</html>
+

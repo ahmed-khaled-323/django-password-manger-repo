@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault - Account Info</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+{% block content %}
+<body>
+    <div class="glass-card details-card">
+        <a href="/Guardpass/" class="back-link">← Back to Dashboard</a>
+        {% for account in accounts %}
+        
+        
+        <h1 id="accountTitle">{{account.bio}}</h1>
+        
+        <div class="info-box">
+            <div class="info-field">
+                <span class="label">Email / Username</span>
+                <h2 id="accountEmail">{{account.UserName}}</h2>
+            </div>
+            <div class="info-field">
+                <span class="label">Password</span>
+                <h2 id="accountPassword" class="masked-password">{{account.Password}}</h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+{% endblock content %}
+
+</html>

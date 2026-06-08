@@ -2,7 +2,11 @@ from django.shortcuts import render ,redirect
 from .models import ex_accounts
 import uuid
 from django.contrib.auth import authenticate
-
+from cryptography.fernet import Fernet
+from django.conf import settings
+from django.contrib import messages
+EK = settings.ENCRYPTION_KEY
+f = Fernet(EK)
 # Create your views here.
 def add_new_account(request):
     if request.user.is_authenticated:
@@ -11,11 +15,14 @@ def add_new_account(request):
             password =request.POST.get('password')
             bio =  request.POST.get('bio')
             if gmail and password and bio:
-                exaccount = ex_accounts.objects.create(owner=request.user,UserName =gmail,Password=password,bio=bio)
-                exaccount.save()
+                Encrypted_gmail = f.encrypt(bytes(gmail,"utf-8"))
+                Encrypted_password = f.encrypt(bytes(password,"utf-8"))
+                Encrypted_bio = f.encrypt(bytes(bio,"utf-8"))
+                print (Encrypted_gmail)
+                exaccount = ex_accounts.objects.create(owner=request.user,UserName =Encrypted_gmail,Password=Encrypted_password,bio=Encrypted_bio)
                 return redirect('/Guardpass/')
             else:
-                print ("username or password is epty")
+                messages.error(request,'Some fields Is Empty')
     else:
         return redirect('/')
             
@@ -36,7 +43,7 @@ def show_account(request , account_id):
     return render(request , 'gardpass-pages/account.html',{"accounts": account })
 
 def delete(request , account_id): 
-    if request =='POST':
+    if request.method =='POST':
         if request.user.is_authenticated:
             account =ex_accounts.objects.filter(id=account_id)
             account.delete()
